@@ -39,7 +39,7 @@ class TeamCityCrypt {
         $cryptoStream.Write($plainText, 0, $plainText.Length)
         $cryptoStream.FlushFinalBlock()
 
-        return ([TeamCityCrypt]::Prefix + (($ms.ToArray() | % { $_.ToString('X') }) -join '')).ToLowerInvariant()
+        return ([TeamCityCrypt]::Prefix + (($ms.ToArray() | % { $_.ToString('X2') }) -join '')).ToLowerInvariant()
     }
     [string] Hash([string]$Value) {
         $saltBytes = New-Object byte[] 32
